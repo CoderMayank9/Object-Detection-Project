@@ -27,4 +27,15 @@ width: 400px;
 border-radius: 30px !important;
 background-color: white;
 color: black;
+margin: 20px;
+}
+#back
+{
+float: left;
+margin: 5px;
+background: black;
+color: white;
+font-size: 20px !important;
+cursor: pointer;
+width: 100px;
 }
