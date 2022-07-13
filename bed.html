@@ -23,6 +23,7 @@
 
   <script>
 status="";
+objects=[];
 function preload()
 {
 img = loadImage("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVkfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
@@ -37,6 +38,19 @@ document.getElementById("status").innerHTML="Status: Detecting Objects";
 function draw()
 {
 image(img,0,0,640,420);
+if(status!="")
+{
+for(i=0;i<objects.length;i++)
+{
+document.getElementById("status").innerHTML="Status: Object Detected";
+fill(255,0,0);
+percent=floor(objects[i].confidence*100);
+text(objects[i].label+" "+percent+"%",objects[i].x+15,objects[i].y+15);
+noFill();
+stroke(255,0,0);
+rect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);
+}
+}
 }
 function modelloaded()
 {
@@ -51,6 +65,7 @@ if(error)
 console.error(error);
 }
 console.log(results);
+objects=results;
 }
   </script>
 
